@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lucozade 2017</title>
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+<script src="js/jquery-3.1.1.min.js"></script>
+<script rel="text/s" src="js/jquery-3.1.1.min.js"></script>
+<style>
+    
+    /* GLOBAL CSS */
+    body {
+        background: orange;
+        color: white;
+    }
+    p { text-align: center; }
+    
+    
+    /* FLEXBOX CSS */
+    .Aligner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* BUTTON CSS */
+    #go, #stop {
+        display: inline-block;
+        margin: 40px auto;
+        background: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 15px;
+        width: 100px;
+        
+        outline: none;
+    }
+    #go:hover, #stop:hover {
+        background: lightblue;
+        color: white;
+        cursor: pointer;
+    }
+    
+    /* LUCOZADE CONTAINER */
+    .container {
+        height: 80vh;
+        width: 100vw;
+    }
+    
+    .bottle{
+        position: relative;
+        width: 250px;
+        height: 700px;
+    }
+    .liquid {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background-color: green;
+        height: 0px;
+        max-height: 700px;
+    }
+</style>
+</head>
+<body class="go">
+<!--<p>Test</p>-->
+<!--
+<p>
+    <button id="go">Go</button>
+    <button id="stop">Stop</button>
+</p>
+-->
+
+<div class="Aligner container">
+    <div class="bottle">
+        <div class="liquid"></div>
+    </div>
+</div>
+
+
+<script>
+    
+    $( document ).ready(function() {
+        
+        setInterval(function(){
+            growLiquid();
+        }, 100);
+        
+        function growLiquid(){
+            if($('.liquid').height() == "0"){
+                $('.liquid').animate({ height: "700" }, 2200);
+            } else if ($('.liquid').height() == "700"){
+                $('.liquid').animate({ height: "0" }, 2200);
+            }
+        }
+        
+        $( "body" ).click(function() {
+            $( ".liquid" ).stop();
+            $("body").toggleClass("go");
+            if($('.liquid').height() > "10" && $('.liquid').height() < "100"){
+                $('.liquid').css("background-color", "red");
+            }
+            if($('.liquid').height() > "100" && $('.liquid').height() < "200"){
+                $('.liquid').css("background-color", "orange");
+            }
+            if($('.liquid').height() > "200" && $('.liquid').height() < "300"){
+                $('.liquid').css("background-color", "grey");
+            }
+            if($('.liquid').height() > "300" && $('.liquid').height() < "400"){
+                $('.liquid').css("background-color", "yellow");
+            }
+            if($('.liquid').height() > "400" && $('.liquid').height() < "500"){
+                $('.liquid').css("background-color", "brown");
+            }
+            if($('.liquid').height() > "500" && $('.liquid').height() < "600"){
+                $('.liquid').css("background-color", "black");
+            }
+            if($('.liquid').height() > "600" && $('.liquid').height() < "700"){
+                $('.liquid').css("background-color", "white");
+            }
+        });
+        
+        $( "body.go" ).click(function() {
+            // code goes here
+            if($("body").hasClass("go")){
+                $('.liquid').animate({ height: "700" }, 2200);
+            }
+            
+        });
+    });
+
+    
+</script>
+</body>
+</html>
