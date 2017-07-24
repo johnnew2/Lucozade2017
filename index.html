@@ -46,8 +46,9 @@
     
     /* LUCOZADE CONTAINER */
     .container {
-        height: 80vh;
+        height: 100vh;
         width: 100vw;
+        z-index: -1;
     }
     
     .images {
@@ -62,19 +63,26 @@
         display: none;
     }
     
+    .images img:nth-of-type(3) {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    
     .bottle{
         position: relative;
-        width: 250px;
-        height: 700px;
+        width: 50%;
+        height: 1640px;
+        margin-top: 45px;
     }
     .liquid {
         display: block;
         position: absolute;
         bottom: 0;
         width: 100%;
-        background-color: green;
+        background-color: orangered;
         height: 0px;
-        max-height: 700px;
+        max-height: 1640px;
     }
 </style>
 </head>
@@ -88,13 +96,14 @@
 -->
 
 <div class="Aligner container">
-    <div class="bottle">
+    <div class="Aligner bottle">
         <div class="liquid"></div>
     </div>
 </div>
 <div class="images">
     <img src="images/lose.png" alt="">
     <img src="images/win.png" alt="">
+   <img src="images/top_layer.png" alt="">
 </div>
 
 
@@ -108,9 +117,9 @@
         
         function growLiquid(){
             if($('.liquid').height() == "0"){
-                $('.liquid').animate({ height: "700" }, 3200);
-            } else if ($('.liquid').height() == "700"){
-                $('.liquid').animate({ height: "0" }, 3200);
+                $('.liquid').animate({ height: "1640" }, 2200);
+            } else if ($('.liquid').height() == "1640"){
+                $('.liquid').animate({ height: "0" }, 2200);
             }
         }
         
